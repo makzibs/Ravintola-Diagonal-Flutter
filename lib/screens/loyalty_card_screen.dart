@@ -6,9 +6,24 @@ import 'package:ravintola_diagonal/widgets/custom_app_bar.dart';
 
 
 
-class LoyaltyCardScreen extends StatelessWidget {
+class LoyaltyCardScreen extends StatefulWidget {
   const LoyaltyCardScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoyaltyCardScreen> createState() => _LoyaltyCardScreenState();
+}
+
+class _LoyaltyCardScreenState extends State<LoyaltyCardScreen> {
+  int currentStamps = 3;  // Move this to state
+  static const int totalStamps = 10;
+
+   void _incrementStamps() {
+    if (currentStamps < totalStamps) {
+      setState(() {
+        currentStamps++;
+      });
+    }
+  }
   Future<void> _handleLogout(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signOut();
@@ -24,6 +39,7 @@ class LoyaltyCardScreen extends StatelessWidget {
   }
 
   Widget _buildStampCircle(BuildContext context, bool isStamped) {
+
     double size = MediaQuery.of(context).size.width;
     return Container(
       width: size*0.12,
@@ -44,9 +60,9 @@ class LoyaltyCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const int totalStamps = 10;
-    const int currentStamps = 3;
-    const int remainingStamps = totalStamps - currentStamps;
+
+
+    final int remainingStamps = totalStamps - currentStamps;
     double size = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -135,15 +151,18 @@ class LoyaltyCardScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               // QR Code placeholder
-              Container(
-                width: size*0.36,
-                height: size*0.36,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                ),
-                child: Icon(
-                  Icons.qr_code_2,
-                  size: size*0.34,
+              InkWell(
+                onTap: _incrementStamps,
+                child: Container(
+                  width: size*0.36,
+                  height: size*0.36,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                  ),
+                  child: Icon(
+                    Icons.qr_code_2,
+                    size: size*0.34,
+                  ),
                 ),
               ),
             ],
