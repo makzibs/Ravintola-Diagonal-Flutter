@@ -83,7 +83,7 @@ class DrawerWidget extends StatelessWidget {
             title: const Text('Ansaitut kupongit'),
             onTap: () {
               Navigator.pop(context); // Close drawer
-              Navigator.pushNamed(context, 'EarnedCouponScreen');
+              Navigator.pushNamed(context, 'TodoScreen');
             },
           ),
           const Divider(),

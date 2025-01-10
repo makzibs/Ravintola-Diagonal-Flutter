@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ravintola_diagonal/screens/earned_coupon_screen.dart';
 import 'package:ravintola_diagonal/screens/loyalty_card_screen.dart';
 import 'package:ravintola_diagonal/screens/menu_screen.dart';
+import 'package:ravintola_diagonal/screens/task_screen.dart';
 import 'screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -88,6 +89,7 @@ class MyApp extends StatelessWidget {
         'LoyaltyCardScreen': (context) => const LoyaltyCardScreen(),
         'MenuScreen': (context) =>  MenuScreen(),
         'EarnedCouponScreen': (context) =>  EarnedCouponScreen(),
+        'TodoScreen': (context) => TaskScreen(),
       }
     );
   }

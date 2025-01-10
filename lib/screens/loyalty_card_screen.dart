@@ -14,7 +14,7 @@ class LoyaltyCardScreen extends StatefulWidget {
 }
 
 class _LoyaltyCardScreenState extends State<LoyaltyCardScreen> {
-  int currentStamps = 3;  // Move this to state
+  int currentStamps = 0;  // Move this to state
   static const int totalStamps = 10;
 
    void _incrementStamps() {
