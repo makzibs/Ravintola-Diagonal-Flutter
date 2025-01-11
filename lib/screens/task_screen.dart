@@ -24,6 +24,12 @@ class _TaskScreenState extends State<TaskScreen> {
     textController.clear();
 
   }
+
+  void removeTask(index) {
+    setState(() {
+      tasksList.removeAt(index);
+    });
+  }
  void toggleTask(int index) {
      setState(() {
        tasksList[index].isDone = !tasksList[index].isDone;
@@ -73,6 +79,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     taskName: tasksList[index].name,
                     isChecked: tasksList[index].isDone,
                     onToggle: () => toggleTask(index),
+                    deleteTask: () => removeTask(index),
                   );
                 }
               ),
